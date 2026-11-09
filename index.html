@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="MSP Store creates thoughtful Android apps focused on productivity, simplicity and everyday utility.">
+  <title>MSP Store — Thoughtful apps for Android</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #65718a;
+      --navy: #101827;
+      --teal: #17b6a4;
+      --blue: #5577f5;
+      --paper: #f6f8fc;
+      --line: #e6eaf2;
+      --white: #fff;
+      --radius: 22px;
+      --shadow: 0 18px 55px rgba(22, 35, 62, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--paper); color: var(--ink);
+      font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    header { position: relative; overflow: hidden; color: white; background: var(--navy); }
+    header::before, header::after {
+      content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+      filter: blur(2px); opacity: .65;
+    }
+    header::before { width: 480px; height: 480px; right: -120px; top: -260px; background: radial-gradient(circle, rgba(23,182,164,.55), transparent 68%); }
+    header::after { width: 520px; height: 520px; left: -250px; bottom: -380px; background: radial-gradient(circle, rgba(85,119,245,.48), transparent 68%); }
+    nav { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; padding: 25px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 750; letter-spacing: -.03em; font-size: 1.12rem; }
+    .mark {
+      display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px;
+      color: white; font-size: .95rem; font-weight: 850; letter-spacing: -.06em;
+      background: linear-gradient(135deg, var(--teal), var(--blue)); box-shadow: 0 8px 24px rgba(23,182,164,.25);
+    }
+    .navlinks { display: flex; gap: 27px; align-items: center; }
+    .navlinks a { color: #d5deef; text-decoration: none; font-size: .92rem; }
+    .navlinks a:hover { color: white; }
+    .hero { position: relative; z-index: 1; padding: 86px 0 112px; max-width: 760px; }
+    .eyebrow { color: #7ce4d7; text-transform: uppercase; font-size: .76rem; font-weight: 800; letter-spacing: .16em; }
+    h1 { margin: 18px 0 18px; max-width: 720px; font-size: clamp(2.7rem, 7vw, 5.1rem); line-height: 1.04; letter-spacing: -.065em; }
+    .hero p { color: #c3cde0; max-width: 650px; font-size: clamp(1.05rem, 2vw, 1.2rem); margin: 0; }
+    .hero-actions { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 19px; border-radius: 999px; font-weight: 700; text-decoration: none; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .primary { background: white; color: var(--navy); }
+    .secondary { border: 1px solid rgba(255,255,255,.28); color: white; }
+    main { padding: 76px 0 86px; }
+    .section-head { max-width: 650px; margin-bottom: 30px; }
+    .kicker { color: #148f85; font-size: .76rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    h2 { font-size: clamp(1.9rem, 4vw, 2.65rem); letter-spacing: -.045em; line-height: 1.15; margin: 9px 0 12px; }
+    .section-head p, .about-copy { color: var(--muted); margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: 0 5px 22px rgba(22,35,62,.035); }
+    .card-icon { display: grid; place-items: center; width: 49px; height: 49px; border-radius: 15px; margin-bottom: 20px; color: #087f78; background: #e5f8f5; font-size: 1.35rem; }
+    .card:nth-child(2) .card-icon { color: #4665db; background: #edf0ff; }
+    .card:nth-child(3) .card-icon { color: #a66a18; background: #fff4df; }
+    h3 { margin: 0 0 8px; font-size: 1.13rem; letter-spacing: -.02em; }
+    .card p { color: var(--muted); margin: 0; font-size: .95rem; }
+    .about { display: grid; grid-template-columns: .85fr 1.15fr; gap: 55px; align-items: center; margin-top: 92px; }
+    .about-panel { min-height: 260px; display: grid; place-items: center; border-radius: 28px; color: white; background: linear-gradient(140deg, #12263b, #183d50 58%, #176c70); box-shadow: var(--shadow); overflow: hidden; position: relative; }
+    .about-panel::before { content: ""; position: absolute; width: 260px; height: 260px; border: 1px solid rgba(255,255,255,.16); border-radius: 50%; }
+    .about-panel::after { content: ""; position: absolute; width: 180px; height: 180px; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; }
+    .panel-mark { position: relative; z-index: 1; font-size: 3rem; font-weight: 900; letter-spacing: -.08em; }
+    .about-copy p { margin: 0 0 14px; }
+    .contact { margin-top: 90px; padding: 42px; border-radius: 28px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow); display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .contact h2 { margin-top: 0; }
+    .contact p { color: var(--muted); margin: 0; }
+    .contact .button { color: white; background: var(--navy); white-space: nowrap; }
+    footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted); font-size: .88rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    footer a { text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 760px) {
+      .navlinks { gap: 14px; }
+      .navlinks a { font-size: .84rem; }
+      .hero { padding: 68px 0 84px; }
+      .grid { grid-template-columns: 1fr; }
+      .about { grid-template-columns: 1fr; gap: 28px; margin-top: 70px; }
+      .about-panel { min-height: 210px; }
+      .contact { padding: 30px; align-items: flex-start; flex-direction: column; margin-top: 70px; }
+    }
+    @media (max-width: 430px) {
+      .wrap { width: min(100% - 30px, 1120px); }
+      nav { align-items: flex-start; }
+      .navlinks { gap: 11px; padding-top: 10px; }
+      .navlinks a { font-size: .78rem; }
+      .brand { font-size: 1rem; }
+      .mark { width: 38px; height: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <div class="wrap">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="MSP Store home">
+          <span class="mark">MSP</span><span>MSP Store</span>
+        </a>
+        <div class="navlinks">
+          <a href="#apps">What we make</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+      <section class="hero">
+        <div class="eyebrow">Thoughtful tools for everyday life</div>
+        <h1>Make your Android work better for you.</h1>
+        <p>MSP Store creates useful Android apps with a focus on productivity, simplicity and everyday utility — helping you get things done with less friction.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#apps">Explore what we make</a>
+          <a class="button secondary" href="mailto:support.mspstore@gmail.com">Get in touch</a>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="apps">
+      <div class="section-head">
+        <div class="kicker">Our focus</div>
+        <h2>Small tools. Useful moments.</h2>
+        <p>We build focused apps that make common tasks simpler and help people use their devices more intentionally.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">◫</div>
+          <h3>Productivity launchers</h3>
+          <p>Minimal home-screen experiences designed to reduce clutter, keep essential apps accessible and encourage more intentional phone use.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">▤</div>
+          <h3>Document tools</h3>
+          <p>Practical utilities such as document scanning and PDF creation, helping you capture and organise information on the go.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">◎</div>
+          <h3>Everyday utilities</h3>
+          <p>Simple tools for daily routines, including Tasbeeh counters and other focused utilities built around specific needs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-panel" aria-label="MSP Store brand mark">
+        <div class="panel-mark">MSP<span style="color:#75e1d2">.</span></div>
+      </div>
+      <div class="about-copy">
+        <div class="kicker">About MSP Store</div>
+        <h2>Technology should feel useful, not overwhelming.</h2>
+        <p>We are an independent app publisher focused primarily on Android. Our goal is to create straightforward, dependable experiences that solve everyday problems without adding unnecessary complexity.</p>
+        <p>From productivity-focused launchers to document tools and simple daily utilities, we believe good apps should be clear, approachable and easy to use.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div>
+        <div class="kicker">We're here to help</div>
+        <h2>Questions or feedback?</h2>
+        <p>For app support, suggestions or general enquiries, send us an email. We'd be glad to hear from you.</p>
+      </div>
+      <a class="button" href="mailto:support.mspstore@gmail.com">support.mspstore@gmail.com</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> MSP Store. All rights reserved.</span>
+      <a href="mailto:support.mspstore@gmail.com">Contact support</a>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
